@@ -2,7 +2,7 @@
 
 **Live demo: [streamgate.dev](https://streamgate.dev)**
 
-A self-hostable video sharing web app built on [Next.js](https://nextjs.org) and powered by [FastPix](https://fastpix.io). Upload a video or record your screen/camera directly in the browser — get a shareable link in seconds.
+A self-hostable video sharing web app built on [Next.js](https://nextjs.org) and powered by [FastPix](https://fastpix.com). Upload a video or record your screen/camera directly in the browser — get a shareable link in seconds.
 
 
 ## Introduction
@@ -27,7 +27,7 @@ StreamGate demonstrates a complete video upload and playback workflow using Fast
 To run StreamGate, you need a FastPix account and API credentials:
 
 - FastPix APIs authenticate with a **Username** (Access Token ID) and a **Password** (Secret Key).
-- Follow the [Authentication with Basic Auth](https://docs.fastpix.io/docs/basic-authentication) guide to generate your credentials from the FastPix dashboard.
+- Follow the [Authentication with Basic Auth](https://fastpix.com/docs/getting-started/activate-your-account) guide to generate your credentials from the FastPix dashboard.
 
 
 ## Table of Contents
@@ -71,7 +71,7 @@ FASTPIX_WEBHOOK_SECRET=your-webhook-secret   # optional but recommended
 NEXT_PUBLIC_BASE_URL=http://localhost:3000   # set to your real domain in production
 ```
 
-Get your Access Token ID and Secret Key from the [FastPix Dashboard](https://dashboard.fastpix.io) under **Settings → Access Tokens**.
+Get your Access Token ID and Secret Key from the [FastPix Dashboard](https://dashboard.fastpix.com) under **Settings → Access Tokens**.
 
 > Security Note: Never commit `.env.local` to version control. It is already included in `.gitignore`.
 
@@ -194,7 +194,7 @@ npm install @fastpix/fp-player @fastpix/resumable-uploads swr fix-webm-duration
 For non-Next.js backends, call the FastPix API directly:
 
 ```bash
-curl -X POST "https://api.fastpix.io/v1/on-demand/upload" \
+curl -X POST "https://api.fastpix.com/v1/on-demand/upload" \
   -u "$FASTPIX_ACCESS_TOKEN_ID:$FASTPIX_SECRET_KEY" \
   -H "Content-Type: application/json" \
   -H "X-Client-Type: web-browser" \
@@ -208,7 +208,7 @@ curl -X POST "https://api.fastpix.io/v1/on-demand/upload" \
   }'
 ```
 
-See the [FastPix API reference](https://docs.fastpix.io/reference/signingkeys-overview) and the resumable uploads SDK for web docs for the full upload flow.
+See the [FastPix API reference](https://fastpix.com/docs/product-os-api/overview) and the resumable uploads SDK for web docs for the full upload flow.
 
 
 <!-- Start Webhooks [webhooks] -->
@@ -216,7 +216,7 @@ See the [FastPix API reference](https://docs.fastpix.io/reference/signingkeys-ov
 
 StreamGate verifies incoming FastPix webhook payloads using HMAC-SHA256. Set `FASTPIX_WEBHOOK_SECRET` in your environment to enable signature verification.
 
-Register your webhook endpoint in the [FastPix Dashboard](https://dashboard.fastpix.io) under **Settings → Webhooks**:
+Register your webhook endpoint in the [FastPix Dashboard](https://dashboard.fastpix.com) under **Settings → Webhooks**:
 
 ```
 https://your-domain.com/api/webhooks/fastpix
